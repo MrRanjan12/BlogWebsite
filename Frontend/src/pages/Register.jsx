@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../api/authApi";
 
 const Register = () => {
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({ name: "", username: "", password: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) =>
@@ -21,45 +21,65 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 p-6 bg-white shadow-lg rounded-xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Register</h2>
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
-            Username
-          </label>
-          <input
-            name="username"
-            id="username"
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Choose a username"
-          />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 via-white to-green-100 px-4">
+      <div className="w-full max-w-sm bg-white shadow-2xl  p-8 border-none">
+        {/* Logo */}
+        <div className="mb-6">
+          <img src="./logo2.svg" alt="SwaMarg Logo" className="w-18" />
         </div>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-2">Sign up</h2>
 
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            id="password"
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Choose a secure password"
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-6 mt-4">
+          <div>
+            <input
+              id="name"
+              name="name"
+              onChange={handleChange}
+              required="Text"
+              placeholder="Full Name"
+              className="w-full border-b border-gray-400 focus:outline-none focus:border-blue-600 text-gray-900 py-2 placeholder-gray-500"
+            />
+            <input
+              id="username"
+              name="username"
+              onChange={handleChange}
+              required="@gmail.com"
+              placeholder="Email"
+              className="w-full border-b border-gray-400 focus:outline-none focus:border-blue-600 text-gray-900 py-2 placeholder-gray-500"
+            />
+            <input
+              id="password"
+              name="password"
+              onChange={handleChange}
+              required="8"
+              placeholder="Password"type="password"
+              className="w-full border-b border-gray-400 focus:outline-none focus:border-blue-600 text-gray-900 py-2 placeholder-gray-500"
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold"
-        >
-          Register
-        </button>
-      </form>
+          <div className="text-sm">
+            <p>
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-600 hover:underline">
+                Log in
+              </Link>
+            </p>
+            <p>
+              <a href="#" className="text-blue-600 hover:underline">
+                Can’t access your account?
+              </a>
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            className="w-fit ml-auto px-6 py-2 bg-blue-600 text-white rounded-sm font-semibold hover:bg-blue-700 transition"
+          >
+            Register
+          </button>
+        </form>
+
+      </div>
     </div>
   );
 };

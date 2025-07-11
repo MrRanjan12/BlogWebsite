@@ -18,7 +18,7 @@ const CreatePost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const author = localStorage.getItem("username");
+    const author = localStorage.getItem("name");
     await createPost({ ...form, author });
     navigate("/");
   };

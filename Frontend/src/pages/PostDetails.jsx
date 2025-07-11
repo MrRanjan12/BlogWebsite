@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { fetchPost, deletePost } from "../api/blogApi";
+import { useParams } from "react-router-dom";
+import { fetchPost } from "../api/blogApi";
+
 
 const PostDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [post, setPost] = useState(null);
 
   useEffect(() => {
     fetchPost(id).then((res) => setPost(res.data));
   }, [id]);
 
-  const handleDelete = async () => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this post?");
-    if (confirmDelete) {
-      await deletePost(id);
-      navigate("/");
-    }
-  };
 
   if (!post) return <p className="text-center text-gray-500 mt-10">Loading...</p>;
 
@@ -30,21 +23,6 @@ const PostDetails = () => {
         <p className="text-sm text-gray-500">
           Author: <span className="font-medium">{post.author || "Anonymous"}</span>
         </p>
-
-        <div className="flex gap-4">
-          <Link
-            to={`/edit/${post._id}`}
-            className="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600 transition"
-          >
-            Edit
-          </Link>
-          <button
-            onClick={handleDelete}
-            className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
-          >
-            Delete
-          </button>
-        </div>
       </div>
     </div>
   );
