@@ -56,6 +56,14 @@ const Navbar = () => {
             {username ? (
               <>
                 <Link
+                  to="/create"
+                  className="flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-md transition text-sm"
+                  title="Create New Post"
+                >
+                  <span className="text-lg font-bold">+</span>
+                  <span>New</span>
+                </Link>
+                <Link
                   to="/profile"
                   className="hidden sm:flex items-center gap-1 hover:text-blue-600"
                 >
@@ -97,12 +105,24 @@ const Navbar = () => {
             <button className="px-3 py-1.5 rounded-md bg-gray-100 hover:bg-gray-200 text-black">
               ☰
             </button>
-            <Link to="/" className="hover:text-blue-600">Discover</Link>
-            <Link to="#" className="hover:text-blue-600">Following</Link>
-            <Link to="#" className="text-blue-600 font-semibold">News</Link>
-            <Link to="#" className="text-yellow-600">Entertainment</Link>
-            <Link to="#" className="text-yellow-500">Lifestyle</Link>
-            <Link to="#" className="hover:text-blue-600">Autos</Link>
+            <Link to="/" className="hover:text-blue-600">
+              Discover
+            </Link>
+            <Link to="#" className="hover:text-blue-600">
+              Following
+            </Link>
+            <Link to="#" className="text-blue-600 font-semibold">
+              News
+            </Link>
+            <Link to="#" className="text-yellow-600">
+              Entertainment
+            </Link>
+            <Link to="#" className="text-yellow-500">
+              Lifestyle
+            </Link>
+            <Link to="#" className="hover:text-blue-600">
+              Autos
+            </Link>
           </div>
           <button className="border border-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-100 hover:text-black transition">
             Personalize
