@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://blogwebsite-73y4.onrender.com/" });
 
 // Send token if exists
 API.interceptors.request.use((req) => {
